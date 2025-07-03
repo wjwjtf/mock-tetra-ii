@@ -41,6 +41,8 @@ npm-debug.log
 !/third_party/image_diff
 !/third_party/pyjson5
 !/third_party/typescript
+!/third_party/node/
+/third_party/node/mac_arm64
 
 test/screenshots/.generated
 test/perf/.generated
