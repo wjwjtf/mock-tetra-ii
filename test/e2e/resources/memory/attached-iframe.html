@@ -1,0 +1,24 @@
+<!--
+  Copyright 2020 The Chromium Authors. All rights reserved.
+  Use of this source code is governed by a BSD-style license that can be
+  found in the LICENSE file.
+-->
+<h1>Memory Panel (Heap profiler) Test</h1>
+<script>
+  var frame = document.createElement('iframe');
+  // Use concatenation to create the string to search for, so that this test can
+  // also verify that searching works on concatenated strings.
+  frame.src = 'data:text/html,<script>class Retainer{}; var aUniqueName = new Retainer();'+
+                    'aUniqueName.prop=\'               searchable \';' +
+                    'aUniqueName.prop+=\'string                   \';<' +
+                    '/script>';
+  document.body.appendChild(frame);
+  frame.addEventListener("load", function() {
+    var iframeWindow  = this.contentWindow;
+    function retainingListener() {
+      // This is leaking the iframe.
+      console.log(iframeWindow);
+    }
+    document.body.addEventListener('click', retainingListener, true);
+  });
+</script>

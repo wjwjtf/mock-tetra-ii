@@ -1,0 +1,42 @@
+<!--
+  Copyright 2023 The Chromium Authors. All rights reserved.
+  Use of this source code is governed by a BSD-style license that can be
+  found in the LICENSE file.
+-->
+<!doctype html>
+<html>
+  <head>
+    <title>Test performance website</title>
+    <style>.container {width: 500px; height: 500px; background: red;}</style>
+  </head>
+  <body>
+    <div class="container">hello world</div>
+    <button id="long-interaction">Long interaction</button>
+    <script>
+      let clicks = 0;
+      const button = document.getElementById('long-interaction');
+      button.onclick = () => {
+        const start = Date.now();
+        let now = Date.now();
+        while (now - start < 300) {
+          now = Date.now();
+        }
+        ++clicks;
+        const click = document.createElement('div');
+        click.textContent = `Click #${clicks}`;
+        document.body.append(click);
+      }
+    </script>
+    <div id="shifted">Content gets pushed down</div>
+    <script>
+      const shifted = document.getElementById('shifted');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const div = document.createElement('div');
+          div.textContent = 'Push content down...';
+          document.body.insertBefore(div, shifted);
+        });
+      });
+    </script>
+  </body>
+</html>
