@@ -36,12 +36,6 @@ vars = {
 
   'cmake_version': 'version:2@3.21.3',
 
-  'llvm_url': 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/',
-  'llvm_revision': '3c51ea3619e488db19cd26840ed46d58cfc7062f',
-
-  'lldb_eval_url': 'https://chromium.googlesource.com/external/github.com/google/lldb-eval.git',
-  'lldb_eval_revision': 'e87123a7e639bf1d86f24c37079570fb7fa00b72',
-
   # ninja CIPD package version.
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:3@1.12.1.chromium.4',
@@ -86,15 +80,6 @@ deps = {
       'cipd',
     'condition': 'checkout_cxx_debugging_extension_deps == True',
   },
-  'extensions/cxx_debugging/third_party/llvm/src': {
-    'url': Var('llvm_url') + '@' + Var('llvm_revision'),
-    'condition': 'checkout_cxx_debugging_extension_deps == True',
-  },
-  'extensions/cxx_debugging/third_party/lldb-eval/src': {
-    'url': Var('lldb_eval_url') + '@' + Var('lldb_eval_revision'),
-    'condition': 'checkout_cxx_debugging_extension_deps == True',
-  },
-
   'buildtools': {
     'url': Var('buildtools_url') + '@' + Var('buildtools_revision'),
     'condition': 'build_with_chromium == False',
