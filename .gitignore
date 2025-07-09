@@ -42,7 +42,7 @@ npm-debug.log
 !/third_party/node/
 !/third_party/depot_tools
 !/third_party/inspector_protocol
-!/third_party/clang-format/script
+!/third_party/clang-format
 /third_party/node/mac_arm64
 
 test/screenshots/.generated
