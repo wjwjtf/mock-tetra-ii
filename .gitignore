@@ -29,8 +29,6 @@ npm-debug.log
 /scripts/ai_assistance/performance-trace-downloads
 /scripts/ai_assistance/auto-run/performance-trace-downloads
 
-/build
-/buildtools
 /out
 /third_party/*
 !/third_party/emscripten-releases/
@@ -42,6 +40,9 @@ npm-debug.log
 !/third_party/pyjson5
 !/third_party/typescript
 !/third_party/node/
+!/third_party/depot_tools
+!/third_party/inspector_protocol
+!/third_party/clang-format/script
 /third_party/node/mac_arm64
 
 test/screenshots/.generated
